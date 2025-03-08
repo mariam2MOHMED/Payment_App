@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payment/core/utils/styles.dart';
 import 'package:payment/features/checkout/presentation/view/widget/master_card.dart';
 import 'package:payment/features/checkout/presentation/view/widget/payment_info.dart';
@@ -12,7 +13,7 @@ class ThankYouViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:  EdgeInsets.only(left: 20,right: 20,
-      bottom: 32,top: 60
+      bottom: 32,top: 50
       ),
       child: Stack(
         clipBehavior: Clip.none,
@@ -49,7 +50,31 @@ class ThankYouViewBody extends StatelessWidget {
              ),
               TotalItem(title: "Total", value: "\$50.97"),
               SizedBox(height: 20.0,),
-              MasterCard()
+              MasterCard(),
+              Spacer(),
+Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Icon(FontAwesomeIcons.barcode,size: 64.0,),
+    Container(
+      padding: EdgeInsets.all(20),
+      decoration: ShapeDecoration(shape:
+      RoundedRectangleBorder(
+        side: BorderSide(
+          color: Color(0xff34A853)
+ ,width: 1.5   ),
+
+        borderRadius: BorderRadius.circular(15.0),
+
+      )),
+      child: Center(
+        child: Text("PAID",style: Styles.style24.copyWith(
+            color: Color(0xff34A853)
+        ),),
+      ),
+    )
+  ],
+),
+              SizedBox(height: (MediaQuery.of(context).size.height*0.2+24)/2-32,)
             ],
           ),
         ),
@@ -70,7 +95,7 @@ class ThankYouViewBody extends StatelessWidget {
               backgroundColor: Colors.white,
             ),
           ),
-          Positioned(
+  Positioned(
             left: 30,right: 30,
             bottom:MediaQuery.of(context).size.height*0.2+24,
             child: Row(

@@ -6,10 +6,11 @@ class ThankYouScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-      body: ThankYouViewBody(),
-      ),
+    return Scaffold(
+      appBar: AppBar(),
+    body: Transform.translate(
+        offset: Offset(0, -10),
+        child: ThankYouViewBody()),
     );
   }
 }

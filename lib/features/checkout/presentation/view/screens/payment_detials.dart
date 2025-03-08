@@ -44,9 +44,12 @@ class _PaymentDetialsState extends State<PaymentDetials> {
 formkey.currentState!.save();
                }else{
 autovalidateMode=AutovalidateMode.always;
-Navigator.push(context,
-    MaterialPageRoute(builder: (context)=>
-        ThankYouScreen()));
+showModalBottomSheet(context: context,
+    backgroundColor: Colors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(16.0)
+    ),
+    builder: (context)=>PaymentSheet());
                }
                setState(() {
 
@@ -60,3 +63,27 @@ Navigator.push(context,
     );
   }
 }
+class PaymentSheet extends StatelessWidget {
+  const PaymentSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 24.0,),
+          PaymentMethodsListView(),
+          SizedBox(height: 24.0,),
+          dftBtn(title: "Continue", onpress: (){
+            Navigator.push(context,
+    MaterialPageRoute(builder: (context)=>
+        ThankYouScreen()));
+          })
+        ],
+      ),
+    );
+  }
+}
+
